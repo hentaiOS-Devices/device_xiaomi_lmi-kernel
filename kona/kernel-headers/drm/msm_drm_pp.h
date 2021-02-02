@@ -30,6 +30,7 @@ struct drm_msm_pcc_coeff {
   __u32 rgb;
 };
 #define DRM_MSM_PCC3
+#define NUM_STRUCT_MASK (0xFUL << 60)
 struct drm_msm_pcc {
   __u64 flags;
   struct drm_msm_pcc_coeff r;
@@ -80,6 +81,7 @@ struct drm_msm_memcol {
   __u32 hue_region;
   __u32 sat_region;
   __u32 val_region;
+  __u64 flags;
 };
 #define DRM_MSM_SIXZONE
 #define SIXZONE_LUT_SIZE 384

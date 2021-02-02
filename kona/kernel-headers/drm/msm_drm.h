@@ -121,7 +121,11 @@ struct drm_msm_gem_cpu_fini {
 };
 struct drm_msm_gem_submit_reloc {
   __u32 submit_offset;
+#ifdef __cplusplus
+  __u32 or_val;
+#else
   __u32 or;
+#endif
   __s32 shift;
   __u32 reloc_idx;
   __u64 reloc_offset;

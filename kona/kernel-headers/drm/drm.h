@@ -77,19 +77,19 @@ struct drm_version {
   int version_minor;
   int version_patchlevel;
   __kernel_size_t name_len;
-  char * name;
+  char __user * name;
   __kernel_size_t date_len;
-  char * date;
+  char __user * date;
   __kernel_size_t desc_len;
-  char * desc;
+  char __user * desc;
 };
 struct drm_unique {
   __kernel_size_t unique_len;
-  char * unique;
+  char __user * unique;
 };
 struct drm_list {
   int count;
-  struct drm_version * version;
+  struct drm_version __user * version;
 };
 struct drm_block {
   int unused;
@@ -201,37 +201,37 @@ struct drm_buf_desc {
 };
 struct drm_buf_info {
   int count;
-  struct drm_buf_desc * list;
+  struct drm_buf_desc __user * list;
 };
 struct drm_buf_free {
   int count;
-  int * list;
+  int __user * list;
 };
 struct drm_buf_pub {
   int idx;
   int total;
   int used;
-  void * address;
+  void __user * address;
 };
 struct drm_buf_map {
   int count;
 #ifdef __cplusplus
-  void * virt;
+  void __user * virt;
 #else
-  void * __linux_virtual;
+  void __user * __linux_virtual;
 #endif
-  struct drm_buf_pub * list;
+  struct drm_buf_pub __user * list;
 };
 struct drm_dma {
   int context;
   int send_count;
-  int * send_indices;
-  int * send_sizes;
+  int __user * send_indices;
+  int __user * send_sizes;
   enum drm_dma_flags flags;
   int request_count;
   int request_size;
-  int * request_indices;
-  int * request_sizes;
+  int __user * request_indices;
+  int __user * request_sizes;
   int granted_count;
 };
 enum drm_ctx_flags {
@@ -244,7 +244,7 @@ struct drm_ctx {
 };
 struct drm_ctx_res {
   int count;
-  struct drm_ctx * contexts;
+  struct drm_ctx __user * contexts;
 };
 struct drm_draw {
   drm_drawable_t handle;

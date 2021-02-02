@@ -99,6 +99,8 @@
 #define MDSS_MDP_HW_REV_117 MDSS_MDP_REV(1, 17, 0)
 #define MDSS_MDP_HW_REV_300 MDSS_MDP_REV(3, 0, 0)
 #define MDSS_MDP_HW_REV_301 MDSS_MDP_REV(3, 0, 1)
+#define MDSS_MDP_HW_REV_320 MDSS_MDP_REV(3, 2, 0)
+#define MDSS_MDP_HW_REV_330 MDSS_MDP_REV(3, 3, 0)
 enum {
   NOTIFY_UPDATE_INIT,
   NOTIFY_UPDATE_DEINIT,
@@ -533,8 +535,8 @@ struct mdp_igc_lut_data_v1_7 {
 struct mdp_igc_lut_data_payload {
   uint32_t table_fmt;
   uint32_t len;
-  uint64_t c0_c1_data;
-  uint64_t c2_data;
+  uint64_t __user c0_c1_data;
+  uint64_t __user c2_data;
   uint32_t strength;
 };
 struct mdp_histogram_cfg {
@@ -791,7 +793,7 @@ struct mdp_dither_data_v1_7 {
 struct mdp_pa_dither_data {
   uint64_t data_flags;
   uint32_t matrix_sz;
-  uint64_t matrix_data;
+  uint64_t __user matrix_data;
   uint32_t strength;
   uint32_t offset_en;
 };
